@@ -68,3 +68,6 @@ gem 'oauth2'
 
 # annotate to show attributes in model files
 gem 'annotate'
+
+# add binding.pry
+gem 'pry'

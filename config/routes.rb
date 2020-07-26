@@ -18,6 +18,7 @@
 #                                       PUT    /users(.:format)                                                                         devise/registrations#update
 #                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
 #                                       POST   /users(.:format)                                                                         devise/registrations#create
+#                  api_journal_journals GET    /api/journal/journals(.:format)                                                          api/journal#journals
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -44,4 +45,8 @@ Rails.application.routes.draw do
   get 'pages/write'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # Journal API
+  get 'api/journal/journals'
+  post 'api/journal/create'
 end

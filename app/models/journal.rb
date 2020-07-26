@@ -17,5 +17,6 @@
 #  index_journals_on_user_id  (user_id)
 #
 class Journal < ApplicationRecord
+    scope :with_user_id, ->(user_id) { where(user_id: user_id) }
     belongs_to :user
 end

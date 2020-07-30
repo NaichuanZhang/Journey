@@ -41,9 +41,12 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  root :to => "pages#home"
   get 'pages/home'
   get 'pages/write'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Journal API

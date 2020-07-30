@@ -16,6 +16,3 @@ require("channels")
 
 require("jquery")
 import 'bootstrap'  //https://blog.makersacademy.com/how-to-install-bootstrap-and-jquery-on-rails-6-da6e810c1b87
-import 'select2'
-import 'select2/dist/css/select2.css'
-import 'tilt.js'

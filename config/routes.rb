@@ -1,24 +1,26 @@
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
+#                                  root GET    /                                                                                        pages#home
 #                            pages_home GET    /pages/home(.:format)                                                                    pages#home
 #                           pages_write GET    /pages/write(.:format)                                                                   pages#write
-#                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
-#                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
-#                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
+#                      new_user_session GET    /users/sign_in(.:format)                                                                 users/sessions#new
+#                          user_session POST   /users/sign_in(.:format)                                                                 users/sessions#create
+#                  destroy_user_session DELETE /users/sign_out(.:format)                                                                users/sessions#destroy
 #                     new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new
 #                    edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit
 #                         user_password PATCH  /users/password(.:format)                                                                devise/passwords#update
 #                                       PUT    /users/password(.:format)                                                                devise/passwords#update
 #                                       POST   /users/password(.:format)                                                                devise/passwords#create
-#              cancel_user_registration GET    /users/cancel(.:format)                                                                  devise/registrations#cancel
-#                 new_user_registration GET    /users/sign_up(.:format)                                                                 devise/registrations#new
-#                edit_user_registration GET    /users/edit(.:format)                                                                    devise/registrations#edit
-#                     user_registration PATCH  /users(.:format)                                                                         devise/registrations#update
-#                                       PUT    /users(.:format)                                                                         devise/registrations#update
-#                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
-#                                       POST   /users(.:format)                                                                         devise/registrations#create
+#              cancel_user_registration GET    /users/cancel(.:format)                                                                  users/registrations#cancel
+#                 new_user_registration GET    /users/sign_up(.:format)                                                                 users/registrations#new
+#                edit_user_registration GET    /users/edit(.:format)                                                                    users/registrations#edit
+#                     user_registration PATCH  /users(.:format)                                                                         users/registrations#update
+#                                       PUT    /users(.:format)                                                                         users/registrations#update
+#                                       DELETE /users(.:format)                                                                         users/registrations#destroy
+#                                       POST   /users(.:format)                                                                         users/registrations#create
 #                  api_journal_journals GET    /api/journal/journals(.:format)                                                          api/journal#journals
+#                    api_journal_create POST   /api/journal/create(.:format)                                                            api/journal#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -45,7 +47,8 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/write'
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

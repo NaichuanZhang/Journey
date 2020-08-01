@@ -15,9 +15,8 @@ class Api::JournalController < ApplicationController
             user = User.find(params[:user_id])
             j = Journal.new()
             j.user_id = user.id
-            journal_hash = JSON.parse(params[:journal_response])
-            j.fingerprint = journal_hash["fingerprint"]
-            j.content = journal_hash["fields"]
+            j.content = JSON.parse(params[:journal_response])
+            j.fingerprint = params[:fingerprint]
             j.save!
             render json: j, status:200
         rescue => exception

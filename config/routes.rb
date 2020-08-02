@@ -4,6 +4,7 @@
 #                                  root GET    /                                                                                        pages#home
 #                            pages_home GET    /pages/home(.:format)                                                                    pages#home
 #                           pages_write GET    /pages/write(.:format)                                                                   pages#write
+#                         pages_journey GET    /pages/journey(.:format)                                                                 pages#journey
 #                      new_user_session GET    /users/sign_in(.:format)                                                                 users/sessions#new
 #                          user_session POST   /users/sign_in(.:format)                                                                 users/sessions#create
 #                  destroy_user_session DELETE /users/sign_out(.:format)                                                                users/sessions#destroy
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   root :to => "pages#home"
   get 'pages/home'
   get 'pages/write'
+  get 'pages/journey'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

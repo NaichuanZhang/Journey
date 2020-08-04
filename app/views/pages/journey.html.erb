@@ -46,12 +46,13 @@
 	<div class="row text-center">
 		<% @journals.each do |journal| %>
 			<div class="col-lg-6 col-md-6 mb-4">
-				<div class="card h-100">
+				<div class="card h-100" style="text-align: center">
 					<img class="card-img-top" src="https://unsplash.it/300/200?random=<%= journal.id %>" alt="">
 					<div class="card-body">
 						<h4 class="card-title"><%= journal.created_at.to_date.to_s %></h4>
-						<p class="card-text" style="white-space: pre-line"><%= journal.journal_card_content %></p>
-					</div>
+						<p class="card-text" id="<%= journal.id %>" style="white-space: pre-line"><%= journal.journal_card_content %></p>
+						<input type="button" class="btn btn-primary" value="复制分享" onclick="copyContent(<%= journal.id %>)" />
+				</div>
 <!--					<div class="card-footer">-->
 <!--						<p class="card-text" style="white-space: pre-line"><%#= journal.location %></p>-->
 <!--					</div>-->
@@ -77,3 +78,18 @@
 </body>
 
 </html>
+
+<script>
+	function copyContent(id) {
+			str = $(`#${id}`).text();
+      const el = document.createElement('textarea');
+      el.value = str;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+  }
+</script>

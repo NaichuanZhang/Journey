@@ -26,7 +26,7 @@ class Journal < ApplicationRecord
         result_str = ""
         i = 1
         while i < questions.size
-            result_str += questions[i] + "\n" + answers[i] + "\n" if !answers[i].blank?
+            result_str += questions[i] + "\n" + answers[i] + "\n\n" if !answers[i].blank?
             i += 1
         end
         result_str
